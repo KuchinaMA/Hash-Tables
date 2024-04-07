@@ -147,7 +147,7 @@ void get_list_sizes(size_t htabe_capacity, TextData text, const char* output_nam
 
     fclose(output_file);
 
-    printf("done\n");
+    //printf("done\n");
 
 }
 
