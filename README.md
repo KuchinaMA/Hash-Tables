@@ -45,7 +45,7 @@ uint32_t const_hash(const char* str) {
 ```
 uint32_t first_letter_hash(const char* str) {
 
-    return (uint32_t)(str[0]);
+    return (uint32_t)str[0];
 
 }
 ```
