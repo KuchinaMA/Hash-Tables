@@ -195,5 +195,37 @@ $D = 3.660941$
 
 <a name="crc32-hash"></a>
 ### 7. crc32_hash
+Эта функция для подсчёта хэша использует алгоритм [crc](https://en.wikipedia.org/wiki/Cyclic_redundancy_check).
+
+```
+uint32_t crc32_hash(const char* str) {
+
+    uint32_t crc_table[256];
+	uint32_t crc = 0;
+	size_t len = strlen(str);
+
+	for (int i = 0; i < 256; i++) {
+		crc = i;
+
+		for (int j = 0; j < 8; j++)
+			crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320U : crc >> 1;
+
+		crc_table[i] = crc;
+	}
+
+	crc = 0xFFFFFFFFU;
+
+	while (len--)
+        crc = crc_table[(crc ^ *str++) & 0xFF] ^ (crc >> 8);
+
+	return crc ^ 0xFFFFFFFFU;
+}
+```
+
+Гистограмма распределения элементов по ячейкам таблицы:
+
+<img src = "Pictures/Crc32Hash.png" width="800">
 
 $D = 2.339055$
+
+Таким образом, распределение, получаемое при использовании этой хэш-функции, лучшее из всех рассмотренных.
