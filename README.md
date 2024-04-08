@@ -36,6 +36,8 @@ uint32_t const_hash(const char* str) {
 ```
 Гистограмма выглядит следующим образом:
 
+<img src = "Pictures/ConstHash0.png" width="800">
+
 В приближенном масштабе:
 
 <img src = "Pictures/ConstHash.png" width="800">
