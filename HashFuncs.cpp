@@ -42,8 +42,8 @@ uint32_t rol_hash(const char* str) {
 
     for (size_t i = 0; i < len; i++) {
 
-        hash_sum = rol(hash_sum) ^ str[i];                 //в ридми привести текст этой функции
-                                                           //+ как компилирует gcc без оптимизаций, с -O2 и -O3
+        hash_sum = rol(hash_sum) ^ str[i];
+
     }
     return hash_sum;
 

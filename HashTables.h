@@ -5,7 +5,7 @@
 #include "ReadData.h"
 
 const size_t TABLE_LEN = 2011;
-const size_t SMALL_TABLE_LEN = 503;
+const size_t SMALL_TABLE_LEN = 373;
 
 enum Is_found {
 
