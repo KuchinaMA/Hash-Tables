@@ -49,21 +49,30 @@ uint32_t rol_hash(const char* str) {
 
 }
 
+inline uint32_t rol(uint32_t value) {
+
+    return ((value << 1)) | (value >> 31);
+
+}
+
 uint32_t ror_hash(const char* str) {
 
     uint32_t hash_sum = 0;
 
     size_t len = strlen(str);
-    //printf("%d\n", len);
 
     for (size_t i = 0; i < len; i++) {
 
         hash_sum = ror(hash_sum) ^ str[i];
-        //printf("%u\n", hash_sum);
     }
 
-    //printf("\n%u\n\n", hash_sum);
     return hash_sum;
+
+}
+
+inline uint32_t ror(uint32_t value) {
+
+    return ((value >> 1)) | (value << 31);
 
 }
 
@@ -118,14 +127,3 @@ uint32_t crc32_hash(const char* str) {
 }
 
 
-inline uint32_t rol(uint32_t value) {
-
-    return ((value << 1)) | (value >> 31);
-
-}
-
-inline uint32_t ror(uint32_t value) {
-
-    return ((value >> 1)) | (value << 31);
-
-}

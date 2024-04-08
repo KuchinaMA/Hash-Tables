@@ -84,10 +84,39 @@ uint32_t strlen_hash(const char* str) {
 
 <a name="rol-hash"></a>
 ### 5. rol_hash
+Эта функция считает хэш строки по следующей формуле: $h(n) = rol(h(n-1)) xor str[n]$, где $rol$ - битовое вращение влево, $str[n]$ - n-ая буква строки, $h(0) = 0$. 
+```
+uint32_t rol_hash(const char* str) {
+
+    uint32_t hash_sum = 0;
+
+    size_t len = strlen(str);
+
+    for (size_t i = 0; i < len; i++) {
+
+        hash_sum = rol(hash_sum) ^ str[i]; 
+                                                           
+    }
+    return hash_sum;
+
+}
+```
+Для реализации этой хэш-функции была написана вспомогательная функция:
+```
+inline uint32_t rol(uint32_t value) {
+
+    return ((value << 1)) | (value >> 31);
+
+}
+```
+Посмотрим, как компилятор преобразовывает эту функцию в ассемблерный код
+С флагом `-O0`:
+<img src = "Pictures/Снимок экрана (1015).png" width="800">
 
 
 <a name="ror-hash"></a>
 ### 6. ror_hash
+
 
 
 <a name="crc32-hash"></a>
