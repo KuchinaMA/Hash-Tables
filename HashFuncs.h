@@ -10,8 +10,11 @@ uint32_t strlen_hash(const char* str);
 uint32_t rol_hash(const char* str);
 uint32_t ror_hash(const char* str);
 uint32_t crc32_hash(const char* str);
+uint32_t crc32_hash_intrinsic(const char* str);
+
 
 inline uint32_t rol(uint32_t value);
 inline uint32_t ror(uint32_t value);
 
 #endif // HASHFUNCS_H_INCLUDED
+
