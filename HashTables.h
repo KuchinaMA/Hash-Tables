@@ -7,7 +7,7 @@
 const size_t TABLE_LEN = 5003;
 const size_t SMALL_TABLE_LEN = 383;
 
-const size_t MAX_WORD_LEN = 100;
+const size_t MAX_WORD_LEN = 32;
 
 const size_t FIND_WORDS_NUM = 1;
 

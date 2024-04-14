@@ -105,10 +105,10 @@ uint32_t crc32_hash(const char* str) {
 uint32_t crc32_hash_intrinsic(const char* str) {
 
     uint32_t crc = 0;
-    crc = _mm_crc32_u32(crc, *((uint64_t*)str ));
-    crc = _mm_crc32_u32(crc, *((uint64_t*)str + 1));
-    crc = _mm_crc32_u32(crc, *((uint64_t*)str + 2));
-    crc = _mm_crc32_u32(crc, *((uint64_t*)str + 3));
+
+    for (size_t i = 0; i < 8; ++i) {
+        crc = _mm_crc32_u32(crc, *((uint32_t*)str + i));
+    }
 
     return crc;
 }
