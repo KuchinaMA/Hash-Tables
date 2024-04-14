@@ -9,7 +9,7 @@ float count_disperce(FILE* input, float avg_length);
 
 int main() {
 
-    FILE* input = fopen("Results/ASCIISumHashSmall.txt", "r");
+    FILE* input = fopen("Results/Crc32Hash.txt", "r");
     float avg = find_average(input);
     fseek(input, 0, SEEK_SET);
 
