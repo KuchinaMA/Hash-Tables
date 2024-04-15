@@ -3,20 +3,16 @@
 .MODEL FLAT, C
 .CODE
 
-_str2$ = 8                                    ; size = 4
-_table$ = 8                                   ; size = 4
-_hash_val$ = 12                               ; size = 4
-_value$ = 16
 
 find_key_asm PROC
 
-        mov     eax, DWORD PTR _table$[esp-4]    ; pointer to table in eax
-        mov     ecx, DWORD PTR _hash_val$[esp-4] ; hash value in ecx
+        mov     eax, DWORD PTR [esp-4]    ; pointer to table in eax
+        mov     ecx, DWORD PTR [esp-4]    ; hash value in ecx
 
         push    esi
         push    edi
 
-        mov     esi, DWORD PTR _value$[esp+4]   ; str to find in esi (we don't have to do it
+        mov     esi, DWORD PTR [esp+4]   ; str to find in esi (we don't have to do it
         vmovdqu ymm0, YMMWORD PTR [esi]        ;                        every time in cycle)
 
         mov     eax, DWORD PTR [eax]            ; pointer to table->cells in eax
@@ -27,8 +23,8 @@ find_key_asm PROC
 
 Srtcmp:
         mov     eax, DWORD PTR [ecx]
-        mov     DWORD PTR _str2$[esp+4], eax
-        mov     edi, DWORD PTR _str2$[esp+4]    ; str in list in edi
+        mov     DWORD PTR [esp+4], eax
+        mov     edi, DWORD PTR [esp+4]          ; str in list in edi
         xor     eax, eax
 
         vmovdqu ymm1, YMMWORD PTR [edi]
